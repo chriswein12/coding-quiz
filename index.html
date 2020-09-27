@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
     <header>
         <h1>JavaScript Coding Quiz</h1>
-
-    
+            <div>
+                <a href="#high-scores">High Scores</a>    
+            </div>
     </header>
+
+    <main>
+        <div class="question-title-container" id="question-title-container">
+            <h2 class="question-title" id="welcome-title">Welcome to the JavaScript Code Quiz!</h2>
+        </div>
+        <div class="question-box" id="question-box">
+            <p class="text-content" id="welcome-rules">RULES: You will have 75 seconds to answer 5 questions about JavaScript. If you choose the right one you will go to the next question. However, if you choose incorrectly, 15 seconds will be removed from the clock. Good luck!"</p>
+            <button class="btn" id="start-button" type="submit">Click to Start!</button>
+            <ul id="answersList"></ul>
+        </div>
+
+        
+    </main>
     
+    <section class="high-scores" id="high-scores">
+        <h2>High Scores</h2>
+        <ol >
+            
+        </ol>
+
+    </section>
+
+    <script src="./assets/script.js"></script>
 </body>
 </html>
