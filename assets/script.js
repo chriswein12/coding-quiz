@@ -38,6 +38,8 @@ var answersListEl = document.querySelector("answersList")
 var timerEl = document.querySelector("#time");
 var formTitleEl = document.querySelector("#submit-title")
 var submitEl = document.querySelector("#submit-high-score");
+var submitInitialsEl = document.querySelector("#initials");
+var highScoreListEl = document.querySelector("#high-scores");
 
 var time = 75;
 var currentQuestionIndex = 0;
@@ -181,28 +183,69 @@ var finalScore = function() {
     submitTitleEl.innerHTML = "<h3 class='submite-title'>Enter your initials to save your score!</h3>";
     formTitleEl.appendChild(submitTitleEl);
 
-    var submitFormEl = document.createElement("input");
-    submitFormEl.innerHTML = "<type='text' name='initials' class='form' placeholder='Enter your initial here' />";
-    submitEl.appendChild(submitFormEl);
+    var submitInitialsEl = document.createElement("input");
+    submitInitialsEl.setAttribute("type", "text");
+    submitInitialsEl.setAttribute("id", "initials");
+    submitInitialsEl.setAttribute("name", "initials");
+    submitEl.appendChild(submitInitialsEl);
 
     var submitButtonEl = document.createElement("button");
     submitButtonEl.textContent = "submit";
     submitButtonEl.className = "submit-button";
     submitEl.appendChild(submitButtonEl);
 
-    submitButtonEl.onclick= saveScore;
+    submitButtonEl.onclick = saveScore;
 
 }
 
 var saveScore = function() {
-    var initials = submitFormEl.value
+    debugger;
+    var playerInitialsInput = document.querySelector("input[name='initials']").value
+    var initials = playerInitialsInput
+
+    console.log(initials)
 
     if (initials !== "") {
 
+        var allSavedScores = JSON.parse(localStorage.getItem("newHighScore")) || [];
+
+        var  newHighScore = {
+            score: time,
+            initials: initials
+        }
+
+        console.log(newHighScore);
+        console.dir(newHighScore);
+
+        allSavedScores.push(newHighScore);
+        localStorage.setItem("newHighScore", JSON.stringify(newHighScore));
+
+        loadScore();
+
+
     }
+    else {
+        alert("Please enter Initials")
+        saveScore();
+    }
+}
+
+var loadScore = function(){
+    var allSavedScores = JSON.parse(localStorage.getItem("newHighScore")) || [];
+
+    
+    for (var i = 0; i < 1; i++) {
+
+    var scoreListItemEl = document.createElement("li");
+    scoreListItemEl.textContent = allSavedScores.initials + " - " + allSavedScores.score;
+
+    highScoreListEl.appendChild(scoreListItemEl);
+    }
+
 }
 
 
 
+loadScore();
 
 startBtn.addEventListener("click", startQuiz);
