@@ -15,28 +15,29 @@
     </header>
 
     <main>
-        <div class="question-title-container" id="question-title-container">
-            <h2 class="question-title" id="welcome-title">Welcome to the JavaScript Code Quiz!</h2>
-        </div>
-        <div class="question-box" id="question-box">
-            <p class="text-content" id="welcome-rules">RULES: You will have 75 seconds to answer 5 questions about JavaScript. If you choose the right one you will go to the next question. However, if you choose incorrectly, 15 seconds will be removed from the clock. Good luck!"</p>
-            <button class="btn" id="start-button" type="submit">Click to Start!</button>
-            <ul id="answersList"></ul>
-        </div>
+        <section class="wrapper">
+            <div class="question-title-container" id="question-title-container">
+                <h2 class="welcome-title" id="welcome-title">Welcome to the JavaScript Code Quiz!</h2>
+            </div>
+            <div class="question-box" id="question-box">
+                <p class="text-content" id="welcome-rules">RULES: You will have 75 seconds to answer 5 questions about JavaScript. If you choose the right one you will go to the next question. However, if you choose incorrectly, 15 seconds will be removed from the clock. Good luck!"</p>
+                <button class="btn" id="start-button" type="submit">Click to Start!</button>
+                <ul id="answersList"></ul>
+            </div>
 
-        <div class="countdown">Time remaining: <span id="time">75</span></div>
+            <div class="countdown">Time remaining: <span id="time">75</span></div>
 
-        <div id="submit-title"></div>
-        <form id="submit-high-score"></form>
+            <div id="submit-title"></div>
+            <form id="submit-high-score"></form>
+        </section>
 
         
     </main>
     
-    <section class="high-score-container">
+    <section class="high-score-container">  
+   
         <h2>High Scores</h2>
-        <ol class="high-scores" id="high-scores">
-            
-        </ol>
+        <ol class="high-scores" id="high-scores"></ol>
 
     </section>
 

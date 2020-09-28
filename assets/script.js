@@ -2,32 +2,32 @@ var questions = [
     {
         number: "Question 1",
         question: "Which of the following is not a logical operator?",
-        answers: ["|| (OR)", "@@ (AS WELL AS)", "&& (AND)", "! (NOT)"],
-        correct: "@@ (AS WELL AS)"
+        answers: ["A.  || (OR)", "B.  @@ (AS WELL AS)", "C.  && (AND)", "D.  ! (NOT)"],
+        correct: "B.  @@ (AS WELL AS)"
     },
     {
         number: "Question 2",
         question: "Which of the following is not a variable type in JavaScript?",
-        answers: ["reg", "var", "let", "const"],
-        correct: "reg"
+        answers: ["A.  reg", "B.  var", "C.  let", "D.  const"],
+        correct: "A.  reg"
     },
     {
         number: "Question 3",
         question: "Which of the following is the correct way to set up an array?",
-        answers: ["var wine = ['Cabernet', 'Riesling', 'Sangiovese'];", "var wine = [Cabernet, Riesling, Sangiovese];", "var wine = {Cabernet; Riesling; Sangiovese};", "var wine = ('Cabernet', 'Riesling', 'Sangiovese');"],
-        correct: "var wine = ['Cabernet', 'Riesling', 'Sangiovese'];"
+        answers: ["A.  var wine = ['Cabernet', 'Riesling', 'Sangiovese'];", "B.  var wine = [Cabernet, Riesling, Sangiovese];", "C.  var wine = {Cabernet; Riesling; Sangiovese};", "D.  var wine = ('Cabernet', 'Riesling', 'Sangiovese');"],
+        correct: "A.  var wine = ['Cabernet', 'Riesling', 'Sangiovese'];"
     },
     {
         number: "Question 4",
         question: "var introduction = 'Hi!';. Which of the following will create a popup window saying 'Hi!'?",
-        answers: ["console.log(introduction);", "console.dir(introduction);", "document.querySelector(introduction);", "alert(introduction);"],
-        correct: "alert(introduction);"
+        answers: ["A.  console.log(introduction);", "B.  console.dir(introduction);", "C.  document.querySelector(introduction);", "D.  alert(introduction);"],
+        correct: "D.  alert(introduction);"
     },
     {
         number: "Question 5",
         question: "Which of the following is not a data type in JavaScript?",
-        answers: ["String", "Number", "Letter", "Boolean"],
-        correct: "Letter"
+        answers: ["A.  String", "B.  Number", "C.  Letter", "D.  Boolean"],
+        correct: "C.  Letter"
     }
 ]
 
@@ -72,6 +72,7 @@ var pullQuestions = function() {
 
     var questionContentEl = document.createElement("p");
     questionContentEl.id = "question-content";
+    questionContentEl.className = "question-content";
     questionContentEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
     questionBoxEl.appendChild(questionContentEl);
 
@@ -180,7 +181,7 @@ var endLose = function () {
 var finalScore = function() {
 
     var submitTitleEl = document.createElement("h3");
-    submitTitleEl.innerHTML = "<h3 class='submite-title'>Enter your initials to save your score!</h3>";
+    submitTitleEl.innerHTML = "<h3 class='submit-title'>Enter your initials to save your score!</h3>";
     formTitleEl.appendChild(submitTitleEl);
 
     var submitInitialsEl = document.createElement("input");

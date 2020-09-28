@@ -1,6 +1,6 @@
 :root {
     --jet: #353535ff;
-    --ming: #3c6e71ff;
+    --ming: rgb(85, 147, 151);
     --white: #ffffffff;
     --gainsboro: #d9d9d9ff;
     --indigo-dye: #284b63ff;
@@ -26,7 +26,7 @@ header {
 
 header h1 {
     color: var(--white);
-    margin: 20px;
+    margin: 20px 20px 40px 20px;
 }
 
 header div {
@@ -40,40 +40,52 @@ header div a {
     color: var(--white);
     display: inline;
     font-size: 24px;
-    margin: 20px;
+    margin: 20px 20px 40px 20px;
 }
 
 header a:hover {
     border-bottom: 3px solid #ffffff;
 }
 
+
 main {
     display: flex;
     flex-direction: column;
     background-color: var(--white);
     margin: 0 30px;
+    border-radius: 10px;
 }
 
-main div {
-    
-}
+
 
 button {
     display: flex;
     flex-direction: column;
     background-color: var(--indigo-dye);
-    border: 0;
+    border: 5px solid var(--indigo-dye);
+    border-radius: 5px;
     font-size: 24px;
-    margin: 5px;
+    margin: 10px;
     padding:3px 10px;
     color: #ffffff;
+}
 
+.possible-answers {
+    font-size: 18px;
+    margin: 7px;
+    padding:3px 10px;
 
 }
 
-main div h2 {
+.welcome-title {
     background-color: var(--ming);
-    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    padding: 15px 10px;
+    margin: -1px;
+}
+
+.question-box {
+    padding: 10px 5px;
 }
 
 .text-content {
@@ -82,17 +94,62 @@ main div h2 {
     font-weight: bold;
 }
 
-.countdown {
+.question-title {
+    font-size: 24px;
     background-color: var(--ming);
+    border-radius: 10px 10px 0 0;
+    padding: 15px 10px;
+    margin: -1px;
 }
 
+.question-content {
+    padding: 5px 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.countdown {
+    background-color: var(--ming);
+    border-radius: 0 0 10px 10px;
+    margin: -1px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.lose-title {
+    font-size: 24px;
+    background-color: var(--ming);
+    border-radius: 10px 10px 0 0;
+    padding: 15px 10px;
+    margin: -1px;
+}
+
+
+
 .high-score-container {
-    background-color: var(--white);
+    background-color: var(--ming);
     margin: 0 30px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
 }
 
 .high-score-container h2 {
     text-align: center;
     margin-top: 30px;
     padding: 15px;
+}
+
+.high-scores {
+    text-align: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 0 0 10px 10px;
+    list-style-position: inside;
+}
+
+.high-scores li {
+    text-align: center;
+    padding: 3px;
+
 }
