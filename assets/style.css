@@ -14,6 +14,7 @@
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--indigo-dye);
 }
 
 header {
@@ -49,7 +50,7 @@ header a:hover {
 main {
     display: flex;
     flex-direction: column;
-    background-color: var(--gainsboro);
+    background-color: var(--white);
     margin: 0 30px;
 }
 
@@ -57,7 +58,41 @@ main div {
     
 }
 
+button {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--indigo-dye);
+    border: 0;
+    font-size: 24px;
+    margin: 5px;
+    padding:3px 10px;
+    color: #ffffff;
+
+
+}
+
 main div h2 {
     background-color: var(--ming);
     padding: 10px;
+}
+
+.text-content {
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.countdown {
+    background-color: var(--ming);
+}
+
+.high-score-container {
+    background-color: var(--white);
+    margin: 0 30px;
+}
+
+.high-score-container h2 {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
 }
