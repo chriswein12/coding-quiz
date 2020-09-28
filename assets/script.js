@@ -41,7 +41,7 @@ var currentQuestionIndex = 0;
 var startQuiz = function() {
     var welcomeTitle = document.getElementById("welcome-title");
     var welcomeRules = document.getElementById("welcome-rules");
-    var startButton = document.getElementById("start-button")
+    var startButton = document.getElementById("start-button");
     welcomeTitle.remove();
     welcomeRules.remove();
     startButton.remove();
@@ -51,30 +51,67 @@ var startQuiz = function() {
 
 var pullQuestions = function() {
 
+  
     currentQuestion = questions[currentQuestionIndex];
        
     var questionTitleTextEl = document.createElement("h2");
-    questionTitleTextEl.className = "question-title";
+    questionTitleTextEl.setAttribute("id", "question-title");
     questionTitleTextEl.innerHTML = "<h2 class='question-title'>" + currentQuestion.number + "</h2>";
     questionTitleEl.appendChild(questionTitleTextEl);
 
     var questionContentEl = document.createElement("p");
+    questionContentEl.id = "question-content";
     questionContentEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
     questionBoxEl.appendChild(questionContentEl);
 
     for (var i = 0; i < currentQuestion.answers.length; i++) {
         var buttonChoiceEl = document.createElement("button");
         buttonChoiceEl.textContent = currentQuestion.answers[i];
-        buttonChoiceEl.setAttribute()
+        buttonChoiceEl.className = "possible-answers";
+        buttonChoiceEl.setAttribute("value", buttonChoiceEl.textContent);
         questionBoxEl.appendChild(buttonChoiceEl);
 
-
+        buttonChoiceEl.onclick= answerHandler;
+        console.log(buttonChoiceEl.id);
     }
+
+
 
 }
 
 var answerHandler = function() {
     
+    if (this.value === questions[currentQuestionIndex].correct) {
+    alert("Correct!");
+    }
+    else {
+        alert("Wrong.")
+
+    }
+
+    var questionTitle = document.getElementById("question-title");
+    var questionContent = document.getElementById("question-content");
+
+    questionTitle.remove();
+    questionContent.remove();
+  
+    questionBoxEl.innerHTML="";
+    
+
+
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex === questions.length) {
+        endWin();
+    }
+    else {
+        pullQuestions();
+    }
+
+
+
+
 
 }
 
@@ -103,4 +140,3 @@ var finalScore = function() {
 
 
 startBtn.addEventListener("click", startQuiz);
-answerBtn.addEventListener("click", answerHandler);
