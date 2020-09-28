@@ -15,7 +15,7 @@ var questions = [
         number: "Question 3",
         question: "Which of the following is the correct way to set up an array?",
         answers: ["var wine = ['Cabernet', 'Riesling', 'Sangiovese'];", "var wine = [Cabernet, Riesling, Sangiovese];", "var wine = {Cabernet; Riesling; Sangiovese};", "var wine = ('Cabernet', 'Riesling', 'Sangiovese');"],
-        correct: "var wine = ['Cabernet', 'Riesling', 'Sangiovese']"
+        correct: "var wine = ['Cabernet', 'Riesling', 'Sangiovese'];"
     },
     {
         number: "Question 4",
@@ -35,6 +35,7 @@ var startBtn = document.querySelector("#start-button");
 var questionTitleEl = document.querySelector("#question-title-container")
 var questionBoxEl = document.querySelector("#question-box");
 var answersListEl = document.querySelector("answersList")
+var timerEl = document.querySelector("#time");
 var time = 75;
 var currentQuestionIndex = 0;
 
@@ -45,6 +46,11 @@ var startQuiz = function() {
     welcomeTitle.remove();
     welcomeRules.remove();
     startButton.remove();
+
+
+   
+    startTimer = setInterval(timer, 1000);
+  
 
     pullQuestions();
 }
@@ -86,6 +92,7 @@ var answerHandler = function() {
     }
     else {
         alert("Wrong.")
+        time -= 15;
 
     }
 
@@ -96,10 +103,11 @@ var answerHandler = function() {
     questionContent.remove();
   
     questionBoxEl.innerHTML="";
+
+    if (time <=0) {
+        endLose();
+    }
     
-
-
-
     currentQuestionIndex++;
 
     if (currentQuestionIndex === questions.length) {
@@ -108,26 +116,59 @@ var answerHandler = function() {
     else {
         pullQuestions();
     }
-
-
-
-
-
 }
 
 
 
 
 
-var starTimer = function() {
+var timer = function() {
+    time--;
+    timerEl.textContent = time;
+
+    if (time <= 0) {
+        endLose();
+    }
+
 
 }
+
 
 var endWin = function() {
+    debugger;
+    clearInterval(startTimer);
+
+    var score = time;
+
+    var winTitleEl = document.createElement("h2");
+    winTitleEl.innerHTML = "<h2 class='lose-title'>You've Won!!!</h2>";
+    questionTitleEl.appendChild(winTitleEl);
+
+    var winTextEl = document.createElement("p");
+    winTextEl.innerHTML = "<p>Your score is " + score + "</p>";
+    questionBoxEl.appendChild(winTextEl);
+
+    finalScore();
 
 }
 
 var endLose = function () {
+    clearInterval(startTimer);
+
+    var questionTitle = document.getElementById("question-title");
+    var questionContent = document.getElementById("question-content");
+    questionTitle.remove();
+    questionContent.remove();
+  
+    questionBoxEl.innerHTML="";
+
+    var loseTitleEl = document.createElement("h2");
+    loseTitleEl.innerHTML = "<h2 class='lose-title'>You Lost</h2>";
+    questionTitleEl.appendChild(loseTitleEl);
+
+    var loseTextEl = document.createElement("p");
+    loseTextEl.innerHTML = "<p>The time has expired, better luck next time!</p>";
+    questionBoxEl.appendChild(loseTextEl);
 
 }
 
