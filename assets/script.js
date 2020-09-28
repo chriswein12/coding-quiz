@@ -32,10 +32,13 @@ var questions = [
 ]
 
 var startBtn = document.querySelector("#start-button");
-var questionTitleEl = document.querySelector("#question-title-container")
+var questionTitleEl = document.querySelector("#question-title-container");
 var questionBoxEl = document.querySelector("#question-box");
 var answersListEl = document.querySelector("answersList")
 var timerEl = document.querySelector("#time");
+var formTitleEl = document.querySelector("#submit-title")
+var submitEl = document.querySelector("#submit-high-score");
+
 var time = 75;
 var currentQuestionIndex = 0;
 
@@ -135,7 +138,7 @@ var timer = function() {
 
 
 var endWin = function() {
-    debugger;
+    
     clearInterval(startTimer);
 
     var score = time;
@@ -174,8 +177,30 @@ var endLose = function () {
 
 var finalScore = function() {
 
+    var submitTitleEl = document.createElement("h3");
+    submitTitleEl.innerHTML = "<h3 class='submite-title'>Enter your initials to save your score!</h3>";
+    formTitleEl.appendChild(submitTitleEl);
+
+    var submitFormEl = document.createElement("input");
+    submitFormEl.innerHTML = "<type='text' name='initials' class='form' placeholder='Enter your initial here' />";
+    submitEl.appendChild(submitFormEl);
+
+    var submitButtonEl = document.createElement("button");
+    submitButtonEl.textContent = "submit";
+    submitButtonEl.className = "submit-button";
+    submitEl.appendChild(submitButtonEl);
+
+    submitButtonEl.onclick= saveScore;
+
 }
 
+var saveScore = function() {
+    var initials = submitFormEl.value
+
+    if (initials !== "") {
+
+    }
+}
 
 
 
