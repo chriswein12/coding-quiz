@@ -207,18 +207,19 @@ var saveScore = function() {
 
     if (initials !== "") {
 
-        var allSavedScores = JSON.parse(localStorage.getItem("newHighScore")) || [];
+        var allSavedScores = JSON.parse(localStorage.getItem("allSavedScores")) || [];
 
         var  newHighScore = {
             score: time,
             initials: initials
-        }
+            }
+        
 
-        console.log(newHighScore);
-        console.dir(newHighScore);
+        console.log(allSavedScores);
+        console.dir(allSavedScores);
 
         allSavedScores.push(newHighScore);
-        localStorage.setItem("newHighScore", JSON.stringify(newHighScore));
+        localStorage.setItem("allSavedScores", JSON.stringify(allSavedScores));
 
         loadScore();
 
@@ -231,13 +232,16 @@ var saveScore = function() {
 }
 
 var loadScore = function(){
-    var allSavedScores = JSON.parse(localStorage.getItem("newHighScore")) || [];
+    var allSavedScores = JSON.parse(localStorage.getItem("allSavedScores")) || [];
+
+
+    console.log(allSavedScores);
 
     
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < allSavedScores.length; i++) {
 
     var scoreListItemEl = document.createElement("li");
-    scoreListItemEl.textContent = allSavedScores.initials + " - " + allSavedScores.score;
+    scoreListItemEl.textContent = allSavedScores[i].initials + " - " + allSavedScores[i].score;
 
     highScoreListEl.appendChild(scoreListItemEl);
     }
