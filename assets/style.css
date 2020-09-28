@@ -1,6 +1,7 @@
 :root {
     --jet: #353535ff;
     --ming: rgb(85, 147, 151);
+    --button-hover: rgb(54, 98, 128);
     --white: #ffffffff;
     --gainsboro: #d9d9d9ff;
     --indigo-dye: #284b63ff;
@@ -70,6 +71,13 @@ button {
     color: #ffffff;
 }
 
+button:hover {
+    background-color: var(--button-hover);
+    border: 5px solid var(--button-hover);
+    border-radius: 5px;
+
+}
+
 .possible-answers {
     font-size: 18px;
     margin: 7px;
@@ -116,14 +124,50 @@ button {
     padding: 10px;
 }
 
-.lose-title {
-    font-size: 24px;
+.end-title {
+    font-size: 30px;
     background-color: var(--ming);
     border-radius: 10px 10px 0 0;
     padding: 15px 10px;
     margin: -1px;
+    text-align: center;
 }
 
+.win-text {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.win-text span {
+    padding: 5px 10vw;
+    border-radius: 10px;
+}
+
+.submit-high-score {
+    display: flex;
+    background-color: var(--ming);
+    border-radius: 0 0 10px 10px;
+}
+
+.submit-high-score input {
+  margin: 15px;
+  border-radius: 5px;
+  border-style: unset;
+
+
+}
+
+.submit-title {
+    background-color: var(--ming);
+}
+
+
+.submit-button {
+    font-size: 18px;
+    padding:3px 10px;
+}
 
 
 .high-score-container {
@@ -146,6 +190,7 @@ button {
     background-color: #ffffff;
     border-radius: 0 0 10px 10px;
     list-style-position: inside;
+    padding: 10px;
 }
 
 .high-scores li {

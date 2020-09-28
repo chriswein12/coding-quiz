@@ -102,12 +102,7 @@ var answerHandler = function() {
 
     }
 
-    // var questionTitle = document.getElementById("question-title");
-    // var questionContent = document.getElementById("question-content");
-
-    // questionTitle.remove();
-    // questionContent.remove();
-    
+   
     questionTitleEl.innerHTML="";
     questionBoxEl.innerHTML="";
 
@@ -147,12 +142,15 @@ var endWin = function() {
 
     var score = time;
 
+    var countdownTimer = document.getElementById("countdown-timer");
+    countdownTimer.remove();
+    
     var winTitleEl = document.createElement("h2");
-    winTitleEl.innerHTML = "<h2 class='lose-title'>You've Won!!!</h2>";
+    winTitleEl.innerHTML = "<h2 class='end-title'>You've Won!!!</h2>";
     questionTitleEl.appendChild(winTitleEl);
 
     var winTextEl = document.createElement("p");
-    winTextEl.innerHTML = "<p>Your score is " + score + "</p>";
+    winTextEl.innerHTML = "<p class='win-text'><span>Your score is " + score + "!</span></p>";
     questionBoxEl.appendChild(winTextEl);
 
     finalScore();
@@ -163,15 +161,11 @@ var endLose = function () {
     clearInterval(startTimer);
     timerEl.textContent = 0;
 
-    // var questionTitle = document.getElementById("question-title");
-    // var questionContent = document.getElementById("question-content");
-    // questionTitle.remove();
-    // questionContent.remove();
     questionTitleEl.innerHTML="";
     questionBoxEl.innerHTML="";
 
     var loseTitleEl = document.createElement("h2");
-    loseTitleEl.innerHTML = "<h2 class='lose-title'>You Lost</h2>";
+    loseTitleEl.innerHTML = "<h2 class='end-title'>You Lost</h2>";
     questionTitleEl.appendChild(loseTitleEl);
 
     var loseTextEl = document.createElement("p");
@@ -190,6 +184,7 @@ var finalScore = function() {
     submitInitialsEl.setAttribute("type", "text");
     submitInitialsEl.setAttribute("id", "initials");
     submitInitialsEl.setAttribute("name", "initials");
+    submitInitialsEl.setAttribute("placeholder", "Enter Initials")
     submitEl.appendChild(submitInitialsEl);
 
     var submitButtonEl = document.createElement("button");
