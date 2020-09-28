@@ -102,12 +102,13 @@ var answerHandler = function() {
 
     }
 
-    var questionTitle = document.getElementById("question-title");
-    var questionContent = document.getElementById("question-content");
+    // var questionTitle = document.getElementById("question-title");
+    // var questionContent = document.getElementById("question-content");
 
-    questionTitle.remove();
-    questionContent.remove();
-  
+    // questionTitle.remove();
+    // questionContent.remove();
+    
+    questionTitleEl.innerHTML="";
     questionBoxEl.innerHTML="";
 
     if (time <=0) {
@@ -116,7 +117,7 @@ var answerHandler = function() {
     
     currentQuestionIndex++;
 
-    if (currentQuestionIndex === questions.length) {
+    if (currentQuestionIndex === questions.length && time > 0) {
         endWin();
     }
     else {
@@ -160,12 +161,13 @@ var endWin = function() {
 
 var endLose = function () {
     clearInterval(startTimer);
+    timerEl.textContent = 0;
 
-    var questionTitle = document.getElementById("question-title");
-    var questionContent = document.getElementById("question-content");
-    questionTitle.remove();
-    questionContent.remove();
-  
+    // var questionTitle = document.getElementById("question-title");
+    // var questionContent = document.getElementById("question-content");
+    // questionTitle.remove();
+    // questionContent.remove();
+    questionTitleEl.innerHTML="";
     questionBoxEl.innerHTML="";
 
     var loseTitleEl = document.createElement("h2");
