@@ -169,7 +169,7 @@ var endLose = function () {
     questionTitleEl.appendChild(loseTitleEl);
 
     var loseTextEl = document.createElement("p");
-    loseTextEl.innerHTML = "<p>The time has expired, better luck next time!</p>";
+    loseTextEl.innerHTML = "<p class='lose-text'>The time has expired, better luck next time! Refresh page if you'd like to try again!</p>";
     questionBoxEl.appendChild(loseTextEl);
 
 }
@@ -197,7 +197,6 @@ var finalScore = function() {
 }
 
 var saveScore = function() {
-    debugger;
     var playerInitialsInput = document.querySelector("input[name='initials']").value
     var initials = playerInitialsInput
 
@@ -232,6 +231,8 @@ var saveScore = function() {
 var loadScore = function(){
     var allSavedScores = JSON.parse(localStorage.getItem("allSavedScores")) || [];
 
+    allSavedScores.sort(function(a,b) {
+        return b.score - a.score});
 
     console.log(allSavedScores);
 
@@ -243,6 +244,8 @@ var loadScore = function(){
 
     highScoreListEl.appendChild(scoreListItemEl);
     }
+
+    
 
 }
 

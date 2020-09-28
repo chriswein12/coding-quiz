@@ -22,7 +22,6 @@ header {
     background-color: var(--indigo-dye);
     display: flex;
     justify-content: space-between;
-    /* border-bottom: 1px solid var(--jet); */
 }
 
 header h1 {
@@ -33,20 +32,8 @@ header h1 {
 header div {
     display: flex;
     align-items: flex-end;
-
 }
 
-header div a {
-    text-decoration: none;
-    color: var(--white);
-    display: inline;
-    font-size: 24px;
-    margin: 20px 20px 40px 20px;
-}
-
-header a:hover {
-    border-bottom: 3px solid #ffffff;
-}
 
 
 main {
@@ -131,6 +118,11 @@ button:hover {
     padding: 15px 10px;
     margin: -1px;
     text-align: center;
+}
+
+.lose-text {
+    text-align: center;
+    margin: 15px 5px;
 }
 
 .win-text {
