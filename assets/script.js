@@ -1,3 +1,4 @@
+// Array of objects containing questions, answers, and correct answers.
 var questions = [
     {
         number: "Question 1",
@@ -31,6 +32,7 @@ var questions = [
     }
 ]
 
+// All of the global variables for the querySelector
 var startBtn = document.querySelector("#start-button");
 var questionTitleEl = document.querySelector("#question-title-container");
 var questionBoxEl = document.querySelector("#question-box");
@@ -41,9 +43,11 @@ var submitEl = document.querySelector("#submit-high-score");
 var submitInitialsEl = document.querySelector("#initials");
 var highScoreListEl = document.querySelector("#high-scores");
 
+// Initial values for time and current question
 var time = 75;
 var currentQuestionIndex = 0;
 
+// when button is pressed, startQuiz function removes the initial html from the main section, and starts the process of pulling questions and starting the timer
 var startQuiz = function() {
     var welcomeTitle = document.getElementById("welcome-title");
     var welcomeRules = document.getElementById("welcome-rules");
@@ -51,17 +55,14 @@ var startQuiz = function() {
     welcomeTitle.remove();
     welcomeRules.remove();
     startButton.remove();
-
-
-   
+ 
     startTimer = setInterval(timer, 1000);
   
-
     pullQuestions();
 }
 
+// pullQuestions presents the questions and answers one at a time
 var pullQuestions = function() {
-
   
     currentQuestion = questions[currentQuestionIndex];
        
@@ -86,11 +87,10 @@ var pullQuestions = function() {
         buttonChoiceEl.onclick= answerHandler;
         console.log(buttonChoiceEl.id);
     }
-
-
-
 }
 
+// answerHandler checked if the answer is correct or incorrect, and removes 15 seconds for incorrect answers.
+// If time goes to zero, it will call the endLose function, or if all questions are answered, it will got to the endWin function.
 var answerHandler = function() {
     
     if (this.value === questions[currentQuestionIndex].correct) {
@@ -99,19 +99,20 @@ var answerHandler = function() {
     else {
         alert("Wrong.")
         time -= 15;
-
     }
-
    
+    // clears out previous question.
     questionTitleEl.innerHTML="";
     questionBoxEl.innerHTML="";
 
+    // checks to see if timer is above zero.
     if (time <=0) {
         endLose();
     }
     
     currentQuestionIndex++;
 
+    // checks for win conditions, or goes to the next question.
     if (currentQuestionIndex === questions.length && time > 0) {
         endWin();
     }
@@ -120,10 +121,7 @@ var answerHandler = function() {
     }
 }
 
-
-
-
-
+// timer function.
 var timer = function() {
     time--;
     timerEl.textContent = time;
@@ -131,11 +129,9 @@ var timer = function() {
     if (time <= 0) {
         endLose();
     }
-
-
 }
 
-
+// If the user wins, they will be presented with a winning message and their score. This then calls a function to submit their score.
 var endWin = function() {
     
     clearInterval(startTimer);
@@ -154,9 +150,9 @@ var endWin = function() {
     questionBoxEl.appendChild(winTextEl);
 
     finalScore();
-
 }
 
+// If the user loses, they will be presented with a message stating they lost. Since their score is zero, we do not ask to submit score.
 var endLose = function () {
     clearInterval(startTimer);
     timerEl.textContent = 0;
@@ -174,6 +170,7 @@ var endLose = function () {
 
 }
 
+// This function creates a submit form to enter initials and submit score.
 var finalScore = function() {
 
     var submitTitleEl = document.createElement("h3");
@@ -196,21 +193,21 @@ var finalScore = function() {
 
 }
 
+// This function will check the value to make sure it is initials. It then pushes the object to a local storage array.
 var saveScore = function() {
     var playerInitialsInput = document.querySelector("input[name='initials']").value
     var initials = playerInitialsInput
 
     console.log(initials)
 
-    if (initials !== "") {
+    if (initials !== "" && initials.length <= 3 && isNaN(initials)) {
 
         var allSavedScores = JSON.parse(localStorage.getItem("allSavedScores")) || [];
 
         var  newHighScore = {
             score: time,
             initials: initials
-            }
-        
+            }        
 
         console.log(allSavedScores);
         console.dir(allSavedScores);
@@ -219,15 +216,14 @@ var saveScore = function() {
         localStorage.setItem("allSavedScores", JSON.stringify(allSavedScores));
 
         loadScore();
-
-
     }
     else {
         alert("Please enter Initials")
-        saveScore();
+        return false;
     }
 }
 
+// This function will pull high score values from local storage, sort, and display the high scores.
 var loadScore = function(){
     var allSavedScores = JSON.parse(localStorage.getItem("allSavedScores")) || [];
 
@@ -235,7 +231,6 @@ var loadScore = function(){
         return b.score - a.score});
 
     console.log(allSavedScores);
-
     
     for (var i = 0; i < allSavedScores.length; i++) {
 
@@ -243,14 +238,11 @@ var loadScore = function(){
     scoreListItemEl.textContent = allSavedScores[i].initials + " - " + allSavedScores[i].score;
 
     highScoreListEl.appendChild(scoreListItemEl);
-    }
-
-    
-
+    } 
 }
 
-
-
+// Calls loadScore function when website starts.
 loadScore();
 
+// Listener for initial button to start quiz
 startBtn.addEventListener("click", startQuiz);

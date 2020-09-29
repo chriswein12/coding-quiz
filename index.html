@@ -11,31 +11,36 @@
         <h1>JavaScript Coding Quiz</h1>
     </header>
 
+    <!-- This section contains the intro screen, and then re-uses the section to present the questions and answers. -->
     <main>
-        <section class="wrapper">
-            <div class="question-title-container" id="question-title-container">
-                <h2 class="welcome-title" id="welcome-title">Welcome to the JavaScript Code Quiz!</h2>
-            </div>
-            <div class="question-box" id="question-box">
-                <p class="text-content" id="welcome-rules">RULES: You will have 75 seconds to answer 5 questions about JavaScript. If you choose the right one you will go to the next question. However, if you choose incorrectly, 15 seconds will be removed from the clock. Good luck!"</p>
-                <button class="btn" id="start-button" type="submit">Click to Start!</button>
-                <ul id="answersList"></ul>
-            </div>
 
-            <div class="countdown" id="countdown-timer">Time remaining: <span id="time">75</span></div>
+        <!-- This div will initially present a welcome title message, and then update to the question numbers -->
+        <div class="question-title-container" id="question-title-container">
+            <h2 class="welcome-title" id="welcome-title">Welcome to the JavaScript Code Quiz!</h2>
+        </div>
 
-            <div class="submit-title" id="submit-title"></div>
-            <form class="submit-high-score" id="submit-high-score"></form>
-        </section>
+        <!-- This div starts by showing the rules and start button, but will update after the start button is clicked to show the questions and answers -->
+        <div class="question-box" id="question-box">
+            <p class="text-content" id="welcome-rules">RULES: You will have 75 seconds to answer 5 questions about JavaScript. If you choose the correct answer you will go to the next question. However, if you choose incorrectly, 15 seconds will be removed from the clock. Good luck!"</p>
+            <button class="btn" id="start-button" type="submit">Click to Start!</button>
+            <ul id="answersList"></ul>
+        </div>
 
-        
+        <!-- 75 second countdown timer -->
+        <div class="countdown" id="countdown-timer">Time remaining: <span id="time">75</span></div>
+
+        <!-- The div and form will be updated after the game is one to allow players to submit their initials and high score -->
+        <div class="submit-title" id="submit-title"></div>
+        <form class="submit-high-score" id="submit-high-score"></form>
+
     </main>
     
-    <section class="high-score-container">  
-   
+    <!-- This section will present high scores -->
+    <section class="high-score-container">    
         <h2>High Scores</h2>
-        <ol class="high-scores" id="high-scores"></ol>
-
+        <ol class="high-scores" id="high-scores">
+            <!-- <li> items will be added through JavaScript -->
+        </ol>
     </section>
 
     <script src="./assets/script.js"></script>

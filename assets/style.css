@@ -1,3 +1,4 @@
+/* Styling for entire page */
 :root {
     --jet: #353535ff;
     --ming: rgb(85, 147, 151);
@@ -18,6 +19,8 @@ body {
     background-color: var(--indigo-dye);
 }
 
+
+/* Styling for header */
 header {
     background-color: var(--indigo-dye);
     display: flex;
@@ -34,8 +37,7 @@ header div {
     align-items: flex-end;
 }
 
-
-
+/* Styling for main section */
 main {
     display: flex;
     flex-direction: column;
@@ -43,8 +45,6 @@ main {
     margin: 0 30px;
     border-radius: 10px;
 }
-
-
 
 button {
     display: flex;
@@ -147,21 +147,18 @@ button:hover {
   margin: 15px;
   border-radius: 5px;
   border-style: unset;
-
-
 }
 
 .submit-title {
     background-color: var(--ming);
 }
 
-
 .submit-button {
     font-size: 18px;
     padding:3px 10px;
 }
 
-
+/* Styling for high scores section */
 .high-score-container {
     background-color: var(--ming);
     margin: 0 30px;
@@ -188,5 +185,4 @@ button:hover {
 .high-scores li {
     text-align: center;
     padding: 3px;
-
 }
